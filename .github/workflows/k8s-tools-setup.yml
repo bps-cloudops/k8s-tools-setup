@@ -1,0 +1,29 @@
+name: Setup Kubernetes Tools
+description: Reusable workflow to install kubectl, Helm, jq, and Terraform
+runs:
+  using: composite
+  steps:
+    - name: Install Kubectl
+      shell: bash
+      run: |
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        chmod +x kubectl
+        mkdir -p ~/.local/bin
+        sudo mv kubectl /usr/local/bin/
+
+    - name: Install Helm
+      shell: bash
+      run: |
+        curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+        chmod +x get_helm.sh
+        ./get_helm.sh
+
+    - name: Install jq
+      shell: bash
+      run: sudo apt-get update && sudo apt-get install -y jq
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: 1.11.3
+        terraform_wrapper: false
