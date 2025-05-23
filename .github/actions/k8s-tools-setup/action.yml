@@ -25,5 +25,5 @@ runs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
       with:
-        terraform_version: 1.11.3
+        terraform_version: 1.12.0
         terraform_wrapper: false
