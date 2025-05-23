@@ -1,7 +1,7 @@
-name: Setup Kubernetes Tools
-description: Reusable workflow to install kubectl, Helm, jq, and Terraform
+name: 'Kubernetes Tools Setup'
+description: 'Sets up Kubernetes tools like kubectl, helm, and others'
 runs:
-  using: composite
+  using: 'composite'
   steps:
     - name: Install Kubectl
       shell: bash
